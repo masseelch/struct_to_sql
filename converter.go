@@ -9,9 +9,9 @@ import (
 const (
 	KDefaultFlagsName = "sql"
 	KDefaultTagName   = "db"
-	kInsertFlag = "i"
-	kUpdateFlag = "u"
-	kSelectFlag = "s"
+	kInsertFlag       = "i"
+	kUpdateFlag       = "u"
+	kQueryFlag        = "q"
 )
 
 type Cols []string
@@ -37,8 +37,8 @@ func (c *Converter) UpdateCols(s interface{}) (Cols, error) {
 	return c.cols(s, kUpdateFlag)
 }
 
-func (c *Converter) SelectCols(s interface{}) (Cols, error) {
-	return c.cols(s, kSelectFlag)
+func (c *Converter) QueryCols(s interface{}) (Cols, error) {
+	return c.cols(s, kQueryFlag)
 }
 
 func (c *Converter) InsertVals(s interface{}) (Vals, error) {
@@ -50,7 +50,7 @@ func (c *Converter) UpdateVals(s interface{}) (Vals, error) {
 }
 
 func (c *Converter) SelectVals(s interface{}) (Vals, error) {
-	return c.vals(s, kSelectFlag)
+	return c.vals(s, kQueryFlag)
 }
 
 func (c *Converter) cols(s interface{}, flags ...string) (Cols, error) {
